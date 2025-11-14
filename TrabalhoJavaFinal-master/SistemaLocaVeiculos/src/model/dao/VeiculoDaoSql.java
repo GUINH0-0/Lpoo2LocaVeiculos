@@ -140,6 +140,7 @@ public class VeiculoDaoSql implements VeiculoDao {
     // ====================== MÉTODO AUXILIAR ======================
 
     public Veiculo criarVeiculo(ResultSet rs) throws SQLException {
+    	Long id = rs.getLong("id");
         String tipo = rs.getString("tipo");
         String modeloStr = rs.getString("modelo");
         Estado estado = Estado.valueOf(rs.getString("estado"));
@@ -150,12 +151,13 @@ public class VeiculoDaoSql implements VeiculoDao {
         double valorCompra = rs.getDouble("valor_compra");
 
         return switch (tipo) {
-            case "Automovel" -> new Automovel(estado, marca, categoria, ModeloAutomovel.valueOf(modeloStr), placa, ano, valorCompra);
-            case "Van" -> new Van(estado, marca, categoria, ModeloVan.valueOf(modeloStr), placa, ano, valorCompra);
-            case "Motocicleta" -> new Motocicleta(estado, marca, categoria, ModeloMotocicleta.valueOf(modeloStr), placa, ano, valorCompra);
+            case "Automovel" -> new Automovel(id, estado, marca, categoria, ModeloAutomovel.valueOf(modeloStr), placa, ano, valorCompra);
+            case "Van" -> new Van(id, estado, marca, categoria, ModeloVan.valueOf(modeloStr), placa, ano, valorCompra);
+            case "Motocicleta" -> new Motocicleta(id, estado, marca, categoria, ModeloMotocicleta.valueOf(modeloStr), placa, ano, valorCompra);
             default -> throw new IllegalArgumentException("Tipo de veículo inválido: " + tipo);
         };
     }
+
 
     public void deleteByPLaca(String placa) throws SQLException {
     String sql = "DELETE FROM veiculo WHERE placa = ?";
@@ -171,4 +173,5 @@ public class VeiculoDaoSql implements VeiculoDao {
 }
 
 }
+
 
