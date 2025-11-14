@@ -18,8 +18,8 @@ public abstract class Veiculo implements VeiculoI, Serializable {
 	private int ano;
 	private double valorDeCompra;
 	
-	public Veiculo(Estado estado, Marca marca, Categoria categoria, String placa, int ano, double valorDeCompra) {
-		this.estado = estado; this.marca = marca; this.categoria = categoria;
+	public Veiculo(Long id, Estado estado, Marca marca, Categoria categoria, String placa, int ano, double valorDeCompra) {
+		this.id = id; this.estado = estado; this.marca = marca; this.categoria = categoria;
 		this.placa = placa; this.ano = ano; this.valorDeCompra = valorDeCompra;
 	}
 	
