@@ -25,11 +25,12 @@ import view.TelaVenderVeiculos;
 public class Main extends JFrame{
 	private static final long serialVersionUID = -9151783484566916823L;
 	public static int fh = (int)(Toolkit.getDefaultToolkit().getScreenSize().height * 0.56), fw = (int)( Toolkit.getDefaultToolkit().getScreenSize().height * 1.08);
-	public static VeiculoController veiculosController = new VeiculoController();
-	public static ClienteController clienteController = new ClienteController();
 	public static List<Cliente> clientes = ClienteRepo.load();
     public static List<Veiculo> veiculos = VeiculoRepo.load();
  	public static List<Locacao> locacoes;
+ 	public static VeiculoController veiculosController = new VeiculoController();
+	public static ClienteController clienteController = new ClienteController();
+	public static LocacaoController locacaoController = new LocacaoController();
 
 
 	
