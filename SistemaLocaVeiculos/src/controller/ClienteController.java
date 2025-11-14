@@ -15,9 +15,9 @@ public class ClienteController {
     private TelaManterClientes telaManterClientes;
 
     public ClienteController() {
-        carregarClientesDoBanco();
         try {
             clienteDao = DaoFactory.getDao(ClienteDao.class, DaoType.SQL);
+            carregarClientesDoBanco();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao inicializar ClienteDao: " + e.getMessage());
         }
