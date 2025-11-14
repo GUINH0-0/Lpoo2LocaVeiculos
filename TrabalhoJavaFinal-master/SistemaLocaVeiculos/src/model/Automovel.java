@@ -8,10 +8,11 @@ import enums.ModeloAutomovel;
 @SuppressWarnings("serial")
 public class Automovel extends Veiculo{
 	private ModeloAutomovel modelo;
-	public Automovel(Estado estado, Marca marca, Categoria categoria, ModeloAutomovel modelo, String placa, int ano, double valorDeCompra) {
-		super(estado, marca, categoria, placa, ano, valorDeCompra);
+	public Automovel(Long id, Estado estado, Marca marca, Categoria categoria, ModeloAutomovel modelo, String placa, int ano, double valorDeCompra) {
+		super(id,estado, marca, categoria, placa, ano, valorDeCompra);
 		this.modelo = modelo;
 	}
+
 
 	@Override
 	public double getValorDiariaLocacao() {
