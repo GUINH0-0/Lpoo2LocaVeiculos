@@ -26,6 +26,7 @@ public class DatabaseInitializer {
             stmt.executeUpdate("""
                 CREATE TABLE IF NOT EXISTS veiculos (
                     id SERIAL PRIMARY KEY,
+                    tipo VARCHAR(50),
                     placa VARCHAR(10) UNIQUE NOT NULL,
                     estado VARCHAR(20),
                     marca VARCHAR(50),
@@ -58,3 +59,4 @@ public class DatabaseInitializer {
         }
     }
 }
+
