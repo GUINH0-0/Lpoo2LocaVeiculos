@@ -10,6 +10,8 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+
+import model.Locacao;
 import model.Cliente;
 import model.ClienteRepo;
 import model.Veiculo;
@@ -27,6 +29,7 @@ public class Main extends JFrame{
 	public static ClienteController clienteController = new ClienteController();
 	public static List<Cliente> clientes = ClienteRepo.load();
     public static List<Veiculo> veiculos = VeiculoRepo.load();
+ 	public static List<Locacao> locacoes;
 
 
 	
