@@ -130,20 +130,21 @@ public class VeiculoController {
 
     public boolean devolverVeiculo(String placa) {
         try {
-            Veiculo veiculo = veiculoDao.buscarPorPlaca(placa);
-            if (veiculo == null) {
-                JOptionPane.showMessageDialog(null, "Veículo com placa " + placa + " não encontrado!");
-                return false;
-            }
+        	for(Veiculo veiculo : Main.veiculos) {
+        		if(veiculo.getPlaca().equals(placa)) {
 
-            veiculo.devolver();
-            veiculoDao.update(veiculo);
+        			// Atualizar locação no banco
+        			locacaoDao.delete(veiculo.getLocacao());
+        			
+        			veiculo.devolver();
+        			veiculoDao.update(veiculo);
 
-            // Atualizar locação no banco
-            locacaoDao.update(veiculo.getLocacao());
-
-            JOptionPane.showMessageDialog(null, "Veículo devolvido com sucesso!");
-            return true;
+        			JOptionPane.showMessageDialog(null, "Veículo devolvido com sucesso!");
+        			return true;
+        		}
+        	}
+        	JOptionPane.showMessageDialog(null, "Veículo com placa " + placa + " não encontrado!");
+            return false;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao devolver veículo: " + e.getMessage());
             return false;
