@@ -31,7 +31,7 @@ public class VeiculoDaoSql implements VeiculoDao {
 
     @Override
     public void add(Veiculo veiculo) throws SQLException {
-        String sql = "INSERT INTO veiculo (tipo, placa, marca, categoria, estado, ano, valor_compra, modelo) "
+        String sql = "INSERT INTO veiculos (tipo, placa, marca, categoria, estado, ano, valor_compra, modelo) "
                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
@@ -59,7 +59,7 @@ public class VeiculoDaoSql implements VeiculoDao {
 
     @Override
     public void update(Veiculo veiculo) throws SQLException {
-        String sql = "UPDATE veiculo SET tipo = ?, marca = ?, categoria = ?, estado = ?, ano = ?, valor_compra = ?, modelo = ? "
+        String sql = "UPDATE veiculos SET tipo = ?, marca = ?, categoria = ?, estado = ?, ano = ?, valor_compra = ?, modelo = ? "
                 + "WHERE placa = ?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
@@ -88,7 +88,7 @@ public class VeiculoDaoSql implements VeiculoDao {
 
     @Override
     public void delete(Veiculo veiculo) throws SQLException {
-        String sql = "DELETE FROM veiculo WHERE placa = ?";
+        String sql = "DELETE FROM veiculos WHERE placa = ?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, veiculo.getPlaca());
             ps.executeUpdate();
@@ -97,7 +97,7 @@ public class VeiculoDaoSql implements VeiculoDao {
 
     @Override
     public void deleteAll() throws SQLException {
-        String sql = "DELETE FROM veiculo";
+        String sql = "DELETE FROM veiculos";
         try (Statement stmt = connection.createStatement()) {
             stmt.executeUpdate(sql);
         }
@@ -106,7 +106,7 @@ public class VeiculoDaoSql implements VeiculoDao {
     @Override
     public Veiculo getById(long id) throws SQLException {
         // Aqui você precisa ter um campo ID na tabela; se não tiver, pode usar placa
-        String sql = "SELECT * FROM veiculo WHERE id=?";
+        String sql = "SELECT * FROM veiculos WHERE id=?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
@@ -117,7 +117,7 @@ public class VeiculoDaoSql implements VeiculoDao {
 
     @Override
     public Veiculo buscarPorPlaca(String placa) throws SQLException {
-        String sql = "SELECT * FROM veiculo WHERE placa=?";
+        String sql = "SELECT * FROM veiculos WHERE placa=?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, placa);
             ResultSet rs = ps.executeQuery();
@@ -129,7 +129,7 @@ public class VeiculoDaoSql implements VeiculoDao {
     @Override
     public List<Veiculo> getAll() throws SQLException {
         List<Veiculo> lista = new ArrayList<>();
-        String sql = "SELECT * FROM veiculo";
+        String sql = "SELECT * FROM veiculos";
         try (PreparedStatement ps = connection.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) lista.add(criarVeiculo(rs));
@@ -171,3 +171,4 @@ public class VeiculoDaoSql implements VeiculoDao {
 }
 
 }
+
