@@ -139,17 +139,20 @@ public class LocacaoDaoSql implements LocacaoDao {
     }
 
     @Override
-    public Locacao montarLocacao(ResultSet rs) throws SQLException {
+     public Locacao montarLocacao(ResultSet rs) throws SQLException {
         Locacao loc = new Locacao();
         loc.setId(rs.getLong("id"));
+        loc.setVeiculo(rs.getLong("veiculo_id"));
+        loc.setCliente(rs.getLong("cliente_id"));
         loc.setDias(rs.getInt("dias"));
         loc.setValor(rs.getDouble("valor"));
+        
 
         Calendar data = Calendar.getInstance();
         data.setTime(rs.getDate("data_inicio"));
         loc.setData(data);
 
-        // Cliente
+        /*Cliente
         String cpfCliente = rs.getString("cliente_cpf"); // supondo que a coluna exista no ResultSet
         try {
             if (cpfCliente != null && !cpfCliente.isEmpty()) {
@@ -158,7 +161,7 @@ public class LocacaoDaoSql implements LocacaoDao {
         } catch (Exception e) {
             System.err.println("Erro ao buscar cliente pelo CPF: " + e.getMessage());
         }
-
+		*/
 
         return loc;
     }
