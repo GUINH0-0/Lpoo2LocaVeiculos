@@ -39,6 +39,13 @@ public class Locacao implements Serializable {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+	
+	public void setCliente(Long clienteid) {
+		for(Cliente c : Main.clientes) {
+			if(c.getId() == clienteid)
+				this.cliente = c;
+		}
+	}
 
 	public void setData(Calendar data) {
 		this.data = data;
@@ -58,5 +65,12 @@ public class Locacao implements Serializable {
 
 	public void setVeiculo(Veiculo veiculo) {
 		this.veiculo = veiculo;
+	}
+	
+	public void setVeiculo(Long veiculoid) {
+		for(Veiculo v : Main.veiculos) {
+			if(v.getId() == veiculoid)
+			this.veiculo = v;
+		}
 	}
 }
