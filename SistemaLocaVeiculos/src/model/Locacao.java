@@ -69,8 +69,10 @@ public class Locacao implements Serializable {
 	
 	public void setVeiculo(Long veiculoid) {
 		for(Veiculo v : Main.veiculos) {
-			if(v.getId() == veiculoid)
+			if(v.getId() == veiculoid) {
 			this.veiculo = v;
+			v.setLocacao(this);
+			}
 		}
 	}
 }
