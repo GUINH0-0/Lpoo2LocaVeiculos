@@ -10,6 +10,7 @@ import model.Automovel;
 import model.Motocicleta;
 import model.Van;
 import model.Veiculo;
+import controller.Main;
 
 @SuppressWarnings("serial")
 public class TelaDevolverVeiculos extends JPanel {
@@ -93,10 +94,12 @@ public class TelaDevolverVeiculos extends JPanel {
     private void atualizarTabela() {
         tabelaModel.setRowCount(0);
 
-        var veiculos = veiculoController.listarTodos();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        
+        Main.veiculosController.carregarVeiculosDoBanco();
+        Main.locacaoController.carregarLocacoesDoBanco();
 
-        for (Veiculo v : veiculos) {
+        for (Veiculo v : Main.veiculos) {
             if (v.getEstado() != Estado.LOCADO) continue;
 
             String modelo = "";
