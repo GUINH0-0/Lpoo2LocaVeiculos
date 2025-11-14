@@ -147,6 +147,7 @@ public class TelaIncluirVeiculo extends JPanel {
 
     private void adicionarVeiculo(ActionEvent e) {
         try {
+        	Long id = (long) 1;
             String tipo = (String) comboTipo.getSelectedItem();
             Estado estado = (Estado) comboEstado.getSelectedItem();
             Marca marca = (Marca) comboMarca.getSelectedItem();
@@ -164,13 +165,13 @@ public class TelaIncluirVeiculo extends JPanel {
 
             switch (tipo) {
                 case "AUTOMÓVEL" -> veiculoController.adicionarVeiculo(
-                        new Automovel(estado, marca, categoria, (ModeloAutomovel) modelo, placa, ano, valor)
+                        new Automovel(id, estado, marca, categoria, (ModeloAutomovel) modelo, placa, ano, valor)
                 );
                 case "MOTOCICLETA" -> veiculoController.adicionarVeiculo(
-                        new Motocicleta(estado, marca, categoria, (ModeloMotocicleta) modelo, placa, ano, valor)
+                        new Motocicleta(id, estado, marca, categoria, (ModeloMotocicleta) modelo, placa, ano, valor)
                 );
                 case "VAN" -> veiculoController.adicionarVeiculo(
-                        new Van(estado, marca, categoria, (ModeloVan) modelo, placa, ano, valor)
+                        new Van(id, estado, marca, categoria, (ModeloVan) modelo, placa, ano, valor)
                 );
             }
 
